@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import List
 
 from .scanner import scan_url, ScanResult
-from .reporter import print_banner, print_result, print_summary, output_json
+from .reporter import print_banner, print_result, print_summary
 
 
 def scan_single(url: str, follow: bool, timeout: int) -> ScanResult:

@@ -4,7 +4,7 @@ from src.scanner import (
     scan_url, HEADER_CHECKS, HEADER_ORDER,
     HeaderResult, ScanResult,
 )
-from src.reporter import print_result, output_json
+
 
 
 class TestHeaderResult:

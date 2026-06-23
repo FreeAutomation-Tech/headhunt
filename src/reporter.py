@@ -72,7 +72,8 @@ def print_summary(results: List[ScanResult]):
     print(f"  {'-'*45} {'-'*6} {'-'*6} {'-'*7}")
     for r in results:
         issues = sum(1 for h in r.headers if not h.present)
-        grade_colored = colorize(r.grade, GREEN if r.grade in ("A", "B") else SEVERITY_COLORS.get("MEDIUM"))
+        color = GREEN if r.grade in ("A", "B") else SEVERITY_COLORS.get("MEDIUM")
+        grade_colored = colorize(r.grade, color)
         print(
             f"  {r.url:<45} {grade_colored:>6} {r.score:>5}%"
             f" {colorize(str(issues), SEVERITY_COLORS.get('HIGH')):>7}"
