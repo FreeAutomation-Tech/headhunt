@@ -6,7 +6,6 @@ from src.scanner import (
 )
 
 
-
 class TestHeaderResult:
     def test_to_dict(self):
         hr = HeaderResult(
