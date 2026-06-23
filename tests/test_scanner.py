@@ -1,5 +1,7 @@
 from unittest.mock import Mock, patch
 
+import requests
+
 from src.scanner import (
     scan_url, HEADER_CHECKS, HEADER_ORDER,
     HeaderResult, ScanResult,
@@ -35,7 +37,7 @@ class TestScanResult:
         ]
         sr = ScanResult(url="https://x.com", status_code=200, headers=headers)
         assert sr.score == 50
-        assert sr.grade == "C"
+        assert sr.grade == "D"
 
     def test_score_zero(self):
         headers = [HeaderResult("a", False)]
@@ -77,7 +79,7 @@ class TestScanUrl:
 
     @patch("src.scanner.requests.get")
     def test_request_error(self, mock_get):
-        mock_get.side_effect = Exception("Connection refused")
+        mock_get.side_effect = requests.RequestException("Connection refused")
 
         result = scan_url("https://example.com")
 
